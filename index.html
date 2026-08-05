@@ -180,6 +180,9 @@ a{text-decoration:none;color:inherit}
 .custom-packaging-note{display:inline-flex;align-items:center;gap:12px;background:rgba(106,190,90,.08);border:1.5px solid rgba(106,190,90,.35);border-radius:var(--r-md);padding:14px 22px;margin-bottom:32px}
 .custom-packaging-note__icon{width:30px;height:30px;background:var(--c-green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:15px;font-weight:900}
 .custom-packaging-note__text{font-size:14px;font-weight:600;color:var(--c-dark);line-height:1.4}
+.tab-btn{padding:9px 20px;border-radius:30px;font-size:13px;font-weight:600;border:1.5px solid var(--c-gray-2);background:var(--c-white);color:var(--c-muted);transition:all .2s;white-space:nowrap}
+.tab-btn:hover{border-color:var(--c-green);color:var(--c-dark)}
+.tab-btn.active{background:var(--c-dark);color:#fff;border-color:var(--c-dark)}
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
 /* PRODUCT CARD */
@@ -775,7 +778,45 @@ function buildMessage() {
 }
 
 function sendWhatsApp() { window.open('https://wa.me/17868279724?text=' + encodeURIComponent(buildMessage()), '_blank'); }
-function sendEmail() { window.location.href = 'mailto:contact@greenportx.com?subject=' + encodeURIComponent('Quote - GreenPort TX') + '&body=' + encodeURIComponent(buildMessage()); }
+
+function sendEmail() {
+  var name  = document.getElementById('m-name').value  || '-';
+  var phone = document.getElementById('m-phone').value || '-';
+  var email = document.getElementById('m-email').value || '-';
+  var city  = document.getElementById('m-city').value  || '-';
+  if (!email.includes('@')) {
+    alert(lang === 'es' ? 'Por favor ingresa un email válido.' : 'Please enter a valid email.');
+    return;
+  }
+  var typeLabel = customerType === 'dist' ? (lang === 'es' ? 'Distribuidor' : 'Distributor') : (lang === 'es' ? 'Ranchero' : 'Rancher');
+  var items = Object.values(cart);
+  var lines = items.length ? items.map(function(i) { return i.product.name[lang] + ' (' + i.product.sku + ') x' + i.qty; }).join(', ') : (lang === 'es' ? 'Sin productos' : 'No products');
+
+  fetch('https://formspree.io/f/xdavqrby', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      email: email,
+      city: city,
+      customerType: typeLabel,
+      products: lines,
+      source: 'Solicitud de Cotización',
+      language: lang
+    })
+  }).then(function(res) {
+    if (res.ok) {
+      alert(lang === 'es' ? '¡Gracias! Tu solicitud fue enviada. Te contactaremos en máximo 48 horas.' : 'Thank you! Your request was sent. We will contact you within 48 hours.');
+      closeModal();
+    } else {
+      alert(lang === 'es' ? 'Hubo un problema al enviar. Intenta por WhatsApp.' : 'There was a problem sending. Please try WhatsApp instead.');
+    }
+  }).catch(function(err) {
+    console.error('Quote email error:', err);
+    alert(lang === 'es' ? 'Hubo un problema al enviar. Intenta por WhatsApp.' : 'There was a problem sending. Please try WhatsApp instead.');
+  });
+}
 
 function setLang(l) {
   lang = l;
