@@ -180,18 +180,6 @@ a{text-decoration:none;color:inherit}
 .custom-packaging-note{display:inline-flex;align-items:center;gap:12px;background:rgba(106,190,90,.08);border:1.5px solid rgba(106,190,90,.35);border-radius:var(--r-md);padding:14px 22px;margin-bottom:32px}
 .custom-packaging-note__icon{width:30px;height:30px;background:var(--c-green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:15px;font-weight:900}
 .custom-packaging-note__text{font-size:14px;font-weight:600;color:var(--c-dark);line-height:1.4}
-.catalog-cta{display:flex;align-items:center;justify-content:space-between;gap:36px;background:var(--c-cream);border:1.5px solid #e8d9c4;border-radius:var(--r-xl);padding:40px 52px;margin:56px 0 8px;flex-wrap:wrap;position:relative;overflow:hidden}
-.catalog-cta::before{content:'';position:absolute;top:-25%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(201,52,36,.08) 0%,transparent 70%);pointer-events:none}
-.catalog-cta__illustration{width:120px;height:150px;flex-shrink:0;position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
-.catalog-cta__illustration img{width:100%;height:100%;object-fit:contain}
-.catalog-cta__illustration-placeholder{width:100%;height:100%;border:1.5px dashed #d4c3a8;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:11px;color:#a89578;text-align:center;padding:10px}
-.catalog-cta__left{display:flex;align-items:center;gap:24px;position:relative;z-index:1;flex:1;min-width:260px}
-.catalog-cta__tag{display:inline-block;font-size:10.5px;font-weight:800;color:var(--c-red);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
-.catalog-cta__text h3{font-size:22px;font-weight:900;color:var(--c-dark);margin-bottom:7px;line-height:1.25}
-.catalog-cta__text p{font-size:14px;color:var(--c-muted);line-height:1.6;max-width:420px}
-.btn-catalog-download{position:relative;z-index:1;display:inline-flex;align-items:center;gap:12px;background:var(--c-red);color:#fff;font-weight:800;font-size:15px;padding:17px 32px;border-radius:var(--r-sm);border:none;white-space:nowrap;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(201,52,36,.2)}
-.btn-catalog-download:hover{background:#a82a1d;transform:translateY(-3px) scale(1.02);box-shadow:0 12px 32px rgba(201,52,36,.35)}
-.btn-catalog-download::after{content:'↓';font-size:16px;font-weight:900}
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
 /* PRODUCT CARD */
@@ -453,19 +441,6 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="catalog-tabs" id="catalog-tabs"></div>
     <div class="product-grid" id="product-grid"></div>
-    <div class="catalog-cta">
-      <div class="catalog-cta__illustration">
-        <div class="catalog-cta__illustration-placeholder" data-es="Espacio para ilustración" data-en="Illustration space">Espacio para ilustración</div>
-      </div>
-      <div class="catalog-cta__left">
-        <div class="catalog-cta__text">
-          <span class="catalog-cta__tag" data-es="Recurso descargable" data-en="Downloadable resource">Recurso descargable</span>
-          <h3 data-es="Descarga nuestro catálogo completo" data-en="Download our full catalog">Descarga nuestro catálogo completo</h3>
-          <p data-es="Todos los productos, especificaciones y fotos en un solo PDF, listo para compartir con tu equipo." data-en="All products, specs and photos in one PDF, ready to share with your team.">Todos los productos, especificaciones y fotos en un solo PDF, listo para compartir con tu equipo.</p>
-        </div>
-      </div>
-      <button id="catalog-pdf-btn" class="btn-catalog-download" onclick="openCatalogModal()" data-href-es="#" data-href-en="#" data-es="Descargar Catálogo PDF" data-en="Download Catalog PDF">Descargar Catálogo PDF</button>
-    </div>
   </div>
 </section>
 
@@ -592,19 +567,6 @@ a{text-decoration:none;color:inherit}
     <div class="modal__btns">
       <button class="btn-wa-modal" onclick="sendWhatsApp()" data-es="Enviar por WhatsApp" data-en="Send via WhatsApp">Enviar por WhatsApp</button>
       <button class="btn-email-modal" onclick="sendEmail()" data-es="Enviar por Email" data-en="Send via Email">Enviar por Email</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="catalog-modal-overlay" onclick="handleCatalogOverlayClick(event)">
-  <div class="modal">
-    <button class="modal__close" onclick="closeCatalogModal()">✕</button>
-    <h3 data-es="Descarga el Catálogo Completo" data-en="Download the Full Catalog">Descarga el Catálogo Completo</h3>
-    <p class="modal__sub" data-es="Déjanos tu nombre y correo, y el PDF se abre al instante." data-en="Leave your name and email, and the PDF opens instantly.">Déjanos tu nombre y correo, y el PDF se abre al instante.</p>
-    <div class="form-group"><label class="form-label" data-es="Nombre" data-en="Name">Nombre</label><input type="text" class="form-input" id="c-name" data-ph-es="Nombre completo" data-ph-en="Full name" placeholder="Nombre completo"></div>
-    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="c-email" data-ph-es="tu@email.com" data-ph-en="you@email.com" placeholder="tu@email.com"></div>
-    <div class="modal__btns">
-      <button class="btn-email-modal" style="flex:1" onclick="submitCatalogLead()" data-es="Descargar Ahora" data-en="Download Now">Descargar Ahora</button>
     </div>
   </div>
 </div>
@@ -793,49 +755,6 @@ function submitContactForm() {
   });
 }
 
-function openCatalogModal() {
-  document.getElementById('catalog-modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCatalogModal() {
-  document.getElementById('catalog-modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function handleCatalogOverlayClick(e) {
-  if (e.target === document.getElementById('catalog-modal-overlay')) closeCatalogModal();
-}
-
-function submitCatalogLead() {
-  var name = document.getElementById('c-name').value || '-';
-  var email = document.getElementById('c-email').value || '-';
-  if (!email.includes('@')) {
-    alert(lang === 'es' ? 'Por favor ingresa un email válido.' : 'Please enter a valid email.');
-    return;
-  }
-  var btn = document.getElementById('catalog-pdf-btn');
-  var pdfHref = btn.getAttribute('data-href-' + lang);
-
-  fetch('https://formspree.io/f/xdavqrby', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      source: 'Descarga de Catálogo PDF',
-      language: lang
-    })
-  }).catch(function(err) { console.error('Lead submission error:', err); });
-
-  closeCatalogModal();
-  if (pdfHref && pdfHref !== '#') {
-    window.open(pdfHref, '_blank');
-  } else {
-    alert(lang === 'es' ? '¡Gracias! El PDF del catálogo se conectará pronto.' : 'Thanks! The catalog PDF will be connected soon.');
-  }
-}
-
 function selectType(type) {
   customerType = type;
   document.getElementById('type-rancher').classList.toggle('active', type === 'rancher');
@@ -856,7 +775,7 @@ function buildMessage() {
 }
 
 function sendWhatsApp() { window.open('https://wa.me/17868279724?text=' + encodeURIComponent(buildMessage()), '_blank'); }
-function sendEmail() { window.location.href = 'mailto:info@greenportx.com?subject=' + encodeURIComponent('Quote - GreenPort TX') + '&body=' + encodeURIComponent(buildMessage()); }
+function sendEmail() { window.location.href = 'mailto:contact@greenportx.com?subject=' + encodeURIComponent('Quote - GreenPort TX') + '&body=' + encodeURIComponent(buildMessage()); }
 
 function setLang(l) {
   lang = l;
@@ -873,8 +792,6 @@ function setLang(l) {
   }
   var phEls = document.querySelectorAll('[data-ph-' + l + ']');
   for (var i = 0; i < phEls.length; i++) phEls[i].placeholder = phEls[i].getAttribute('data-ph-' + l);
-  var pdfBtn = document.getElementById('catalog-pdf-btn');
-  if (pdfBtn) { var pdfHref = pdfBtn.getAttribute('data-href-' + l); if (pdfHref) pdfBtn.setAttribute('href', pdfHref); }
   buildTabs();
   buildProductGrid(currentCat);
 }
