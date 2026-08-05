@@ -1,0 +1,59 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "content/images"
+public_folder: "/content/images"
+
+locale: "es"
+
+collections:
+  - name: "products"
+    label: "Productos"
+    label_singular: "Producto"
+    files:
+      - name: "catalogo"
+        label: "Catálogo Completo"
+        file: "content/products.json"
+        fields:
+          - label: "Categorías"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Clave (no cambiar)", name: "key", widget: "string" }
+              - { label: "Nombre en Español", name: "es", widget: "string" }
+              - { label: "Nombre en Inglés", name: "en", widget: "string" }
+
+          - label: "Foto de respaldo por categoría"
+            name: "category_photos"
+            widget: "object"
+            fields:
+              - { label: "Inseminación Artificial (ia)", name: "ia", widget: "image", required: false }
+              - { label: "Transferencia de Embriones (te)", name: "te", widget: "image", required: false }
+              - { label: "Identificación Animal (id)", name: "id", widget: "image", required: false }
+              - { label: "Guantes y Protección (gp)", name: "gp", widget: "image", required: false }
+              - { label: "Cuidado Bovino (cb)", name: "cb", widget: "image", required: false }
+              - { label: "Cercas Eléctricas (ce)", name: "ce", widget: "image", required: false }
+
+          - label: "Productos"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.sku}} — {{fields.name_es}}"
+            fields:
+              - { label: "SKU", name: "sku", widget: "string" }
+              - label: "Categoría"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Inseminación Artificial", value: "ia" }
+                  - { label: "Transferencia de Embriones", value: "te" }
+                  - { label: "Identificación Animal", value: "id" }
+                  - { label: "Guantes y Protección", value: "gp" }
+                  - { label: "Cuidado Bovino", value: "cb" }
+                  - { label: "Cercas Eléctricas", value: "ce" }
+              - { label: "Nombre (Español)", name: "name_es", widget: "string" }
+              - { label: "Nombre (Inglés)", name: "name_en", widget: "string" }
+              - { label: "Descripción (Español)", name: "description_es", widget: "text" }
+              - { label: "Descripción (Inglés)", name: "description_en", widget: "text" }
+              - { label: "Texto alternativo de la foto (SEO)", name: "alt", widget: "string" }
+              - { label: "Foto del producto", name: "image", widget: "image", required: false, hint: "Recomendado 1200x600px" }
