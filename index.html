@@ -40,6 +40,14 @@
 }
 </script>
 <title>GreenPort TX — Implementos Ganaderos de Alto Rendimiento | Houston, TX</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVD8CNSV8W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PVD8CNSV8W');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -52,7 +60,7 @@
   --shadow-md:0 4px 16px rgba(4,53,52,.10),0 2px 6px rgba(4,53,52,.06);
   --shadow-lg:0 16px 48px rgba(4,53,52,.14),0 4px 12px rgba(4,53,52,.08);
   --shadow-xl:0 24px 64px rgba(4,53,52,.18);
-  --nav-h:88px;--max-w:1320px;--pad-x:48px;
+  --nav-h:104px;--max-w:1320px;--pad-x:48px;
   --ease:cubic-bezier(.25,.46,.45,.94);--ease-out:cubic-bezier(0,0,.2,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -75,7 +83,7 @@ a{text-decoration:none;color:inherit}
 .nav{position:fixed;inset:0 0 auto 0;z-index:200;height:var(--nav-h);background:var(--c-dark);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 var(--pad-x);transition:box-shadow .3s var(--ease)}
 .nav.scrolled{box-shadow:0 4px 24px rgba(4,53,52,.35)}
 .nav__inner{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.nav__logo{height:72px;width:161px;display:block;flex-shrink:0;object-fit:contain}
+.nav__logo{height:94px;width:209px;display:block;flex-shrink:0;object-fit:contain}
 .footer__logo{height:52px;width:116px;object-fit:contain}
 .nav__links{display:flex;align-items:center;gap:2px}
 .nav__link{color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:var(--r-sm);border:none;background:none;transition:color .18s,background .18s;white-space:nowrap}
@@ -86,6 +94,24 @@ a{text-decoration:none;color:inherit}
 .lang-btn.active{background:var(--c-green);color:#fff}
 .btn-cta{background:var(--c-green);color:#fff;font-weight:700;font-size:13.5px;padding:10px 22px;border-radius:var(--r-sm);border:none;transition:background .2s,transform .15s;white-space:nowrap}
 .btn-cta:hover{background:#58a849;transform:translateY(-1px)}
+
+/* HAMBURGER + MOBILE MENU */
+.nav__hamburger{display:none;background:none;border:none;width:30px;height:24px;position:relative;flex-shrink:0;padding:0}
+.nav__hamburger span{display:block;position:absolute;left:0;width:100%;height:2.5px;background:#fff;border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.nav__hamburger span:nth-child(1){top:0}
+.nav__hamburger span:nth-child(2){top:10px}
+.nav__hamburger span:nth-child(3){top:20px}
+.nav__hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+.nav__hamburger.open span:nth-child(2){opacity:0}
+.nav__hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+
+.mobile-menu{position:fixed;top:0;right:0;bottom:0;width:min(320px,82vw);background:var(--c-dark);z-index:250;transform:translateX(100%);transition:transform .32s var(--ease);overflow-y:auto;padding:110px 28px 40px;box-shadow:-12px 0 40px rgba(0,0,0,.3)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu__link{display:block;width:100%;text-align:left;padding:16px 4px;color:#fff;font-size:17px;font-weight:700;border:none;border-bottom:1px solid rgba(255,255,255,.1);background:none}
+.mobile-menu__lang{margin:24px 0 20px;width:fit-content}
+.mobile-menu__cta{width:100%;padding:15px}
+.mobile-menu-overlay{display:none;position:fixed;inset:0;background:rgba(4,53,52,.6);z-index:240}
+.mobile-menu-overlay.open{display:block}
 
 /* HERO */
 .hero{margin-top:var(--nav-h);position:relative;min-height:640px;display:flex;align-items:center;background:var(--c-dark);overflow:hidden}
@@ -295,7 +321,7 @@ a{text-decoration:none;color:inherit}
 .footer__copy{color:rgba(255,255,255,.28);font-size:12px;text-align:right;line-height:1.7}
 
 @media(max-width:1024px){:root{--pad-x:32px}.value-grid{grid-template-columns:1fr 1fr}.product-grid{grid-template-columns:1fr 1fr}.dist-grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}.gallery__item:first-child{grid-row:auto}}
-@media(max-width:768px){:root{--pad-x:20px;--nav-h:60px}.nav__links{display:none}.hero{min-height:520px}.hero__photo{opacity:.55}.hero__stats{gap:28px}.audience-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.about-photo{height:280px}.contact-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;height:auto}.gallery__item{height:220px}.form-row{grid-template-columns:1fr}}
+@media(max-width:768px){:root{--pad-x:20px;--nav-h:72px}.nav__links{display:none}.nav__actions{display:none}.nav__hamburger{display:block}.nav__logo{height:57px;width:127px}.hero{min-height:520px}.hero__photo{opacity:.55}.hero__stats{gap:28px}.audience-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.about-photo{height:280px}.contact-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;height:auto}.gallery__item{height:220px}.form-row{grid-template-columns:1fr}}
 @media(max-width:600px){.product-grid{grid-template-columns:1fr}.value-grid{grid-template-columns:1fr 1fr}.dist-grid{grid-template-columns:1fr}.section{padding:64px var(--pad-x)}}
 </style>
 </head>
@@ -317,8 +343,24 @@ a{text-decoration:none;color:inherit}
       </div>
       <button class="btn-cta" onclick="openModal('cliente')" data-es="Solicitar Cotización" data-en="Request Quote">Solicitar Cotización</button>
     </div>
+    <button class="nav__hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu__link" onclick="go('productos');closeMobileMenu()" data-es="Productos" data-en="Products">Productos</button>
+  <button class="mobile-menu__link" onclick="go('nosotros');closeMobileMenu()" data-es="Nosotros" data-en="About Us">Nosotros</button>
+  <button class="mobile-menu__link" onclick="go('distribuidores');closeMobileMenu()" data-es="Distribuidores" data-en="Distributors">Distribuidores</button>
+  <button class="mobile-menu__link" onclick="go('contacto');closeMobileMenu()" data-es="Contacto" data-en="Contact">Contacto</button>
+  <div class="mobile-menu__lang lang-toggle">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+  <button class="btn-cta mobile-menu__cta" onclick="openModal('cliente');closeMobileMenu()" data-es="Solicitar Cotización" data-en="Request Quote">Solicitar Cotización</button>
+</div>
 
 <section class="hero" id="inicio">
   <div class="hero__photo">
@@ -345,7 +387,6 @@ a{text-decoration:none;color:inherit}
 
 <div class="trust-bar">
   <div class="trust-bar__inner">
-    <div class="trust-item"><div class="trust-item__dot"></div><span data-es="Houston, Texas" data-en="Houston, Texas">Houston, Texas</span></div>
     <div class="trust-item"><div class="trust-item__dot"></div><span data-es="Fabricación propia" data-en="Own manufacturing">Fabricación propia</span></div>
     <div class="trust-item"><div class="trust-item__dot"></div><span data-es="Sin intermediarios" data-en="No middlemen">Sin intermediarios</span></div>
     <div class="trust-item"><div class="trust-item__dot"></div><span data-es="Español · English" data-en="Spanish · English">Español · English</span></div>
@@ -359,7 +400,7 @@ a{text-decoration:none;color:inherit}
     <div class="gallery__cap"><div class="gallery__cap-sub" data-es="Identificación Animal" data-en="Animal ID">Identificación Animal</div><div class="gallery__cap-title" data-es="Aretes de alta durabilidad" data-en="High-durability ear tags">Aretes de alta durabilidad</div></div>
   </div>
   <div class="gallery__item">
-    <img src="https://i.ibb.co/C52R3TFG/Inseminacion-Interior.png" alt="Inseminación artificial bovina GreenPort TX" loading="lazy">
+    <img src="https://i.ibb.co/jv50mz8J/Chat-GPT-Image-Aug-7-2026-02-14-52-PM.png" alt="Inseminación artificial bovina GreenPort TX" loading="lazy">
     <div class="gallery__cap"><div class="gallery__cap-sub" data-es="Línea Veterinaria" data-en="Veterinary Line">Línea Veterinaria</div><div class="gallery__cap-title" data-es="Inseminación Artificial" data-en="Artificial Insemination">Inseminación Artificial</div></div>
   </div>
   <div class="gallery__item">
@@ -404,7 +445,6 @@ a{text-decoration:none;color:inherit}
           <h3 data-es="Quiero comprar para mi rancho" data-en="I want to buy for my ranch">Quiero comprar para mi rancho</h3>
           <p class="audience-card__desc" data-es="Productos de calidad profesional sin cantidad mínima. Cotización rápida sin compromiso." data-en="Professional-quality products with no minimum. Fast quote with no commitment.">Productos de calidad profesional sin cantidad mínima. Cotización rápida sin compromiso.</p>
           <div class="audience-card__list">
-            <div class="audience-card__item"><div class="audience-card__item-dot"></div><span data-es="Sin cantidad mínima obligatoria" data-en="No minimum order required">Sin cantidad mínima obligatoria</span></div>
             <div class="audience-card__item"><div class="audience-card__item-dot"></div><span data-es="Atención en español e inglés" data-en="Service in Spanish and English">Atención en español e inglés</span></div>
             <div class="audience-card__item"><div class="audience-card__item-dot"></div><span data-es="Cotización por WhatsApp o email" data-en="Quote by WhatsApp or email">Cotización por WhatsApp o email</span></div>
             <div class="audience-card__item"><div class="audience-card__item-dot"></div><span data-es="Envíos desde Houston, TX" data-en="Shipping from Houston, TX">Envíos desde Houston, TX</span></div>
@@ -840,6 +880,26 @@ function setLang(l) {
 function go(id) {
   var el = document.getElementById(id);
   if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function toggleMobileMenu() {
+  var menu = document.getElementById('mobile-menu');
+  var overlay = document.getElementById('mobile-menu-overlay');
+  var btn = document.getElementById('hamburger-btn');
+  var isOpen = menu.classList.contains('open');
+  if (isOpen) { closeMobileMenu(); } else {
+    menu.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('mobile-menu-overlay').classList.remove('open');
+  document.getElementById('hamburger-btn').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 window.addEventListener('scroll', function() {
